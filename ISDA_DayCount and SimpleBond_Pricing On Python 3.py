@@ -367,80 +367,8 @@ class phpTax():
         return x
 
 
-# In[9]:
-
-
-##Test Case 1
-from datetime import date
-valueDate = date(2020, 11, 20)
-issueDate = date(2010,9,30)
-maturityDate = date(2035,9,30)
-anni = date(2005,9,30)
-rate = 0.08
-YTM = 4.7410830 / 100 
-taxRate = 0.2
-firstStub = "false"
-finalStub = "false"
-dayCount = 3
-freq=2
-redemValue = 100
-fv = 1500000
-accrInt = testBondPrice.accrInt(valueDate, maturityDate, dayCount, rate, redemValue, anni, freq)*fv/100
-wtax = phpTax.wtax_Coupon(valueDate, maturityDate, dayCount, YTM, rate, redemValue, anni, freq, taxRate)*fv
-amortTax = phpTax.amort_Tax(valueDate,issueDate,maturityDate,dayCount,YTM,rate,redemValue,anni,freq,firstStub, finalStub,taxRate)*fv
-print("amortTax",round(amortTax,2))
-print("collValue",round(cleanPrice+accrInt-wtax-amortTax,2))
-
-
-# In[ ]:
-
-
-#actAct US T-Bond
-d0 = date(2020, 5, 19)
-d1 = date(2026,8,15)
-anni = date(2007,8,15)
-Rate = 0.015
-YTM = 0.1
-accrInt=testBondPrice.accrInt(d0,d1,6,Rate,100,anni,2)
-print(accrInt)
-
-
-# In[ ]:
-
-
-#Test Case 2
-from datetime import date
-valueDate = date(2020, 8, 16)
-issueDate = date(2010, 5, 16)
-maturityDate = date(2040,5,16)
-anni = date(2005,5,10)
-rate = 0.08
-YTM = 0.08
-taxRate = 0.2
-firstStub = "long"
-finalStub = "long"
-dayCount = 3
-freq=2
-fv = 1000000
-redemValue = 100
-x = testBondPrice.cleanPrice(valueDate,issueDate,maturityDate,dayCount,YTM,rate,redemValue,anni,freq,firstStub, finalStub)
-cleanPrice = fv*x/100
-accrInt = testBondPrice.accrInt(valueDate, maturityDate, dayCount, rate, redemValue, anni, freq)*fv/100
-wtax = phpTax.wtax_Coupon(valueDate, maturityDate, dayCount, YTM, rate, redemValue, anni, freq, taxRate)*fv
-amortTax = phpTax.amort_Tax(valueDate,issueDate,maturityDate,dayCount,YTM,rate,redemValue,anni,freq,firstStub, finalStub,taxRate)*fv
-print("cleanPrice",x)
-print("accrInt",accrInt)
-print("amortTax",round(amortTax,2))
-intScheduel.previewSchedule(valueDate,issueDate,maturityDate,dayCount,YTM,rate,redemValue,anni,freq,firstStub, finalStub, fv)
-
-
-# In[ ]:
-
 
 #next target is to pickup bond series from the data frame and make more user friendliness by buidling UI
-
-
-# In[ ]:
 
 
 
