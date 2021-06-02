@@ -322,7 +322,7 @@ class testBondPrice():
                         if finalStub == "false":    
                             pvIntAndPrinc = ((finalInterest+redemValue)*((1+YTM/freq)**(-i)))
                         if finalStub == "short":
-                            pvIntAndPrinc = ((finalInterest+redemValue)*((1+YTM/freq)**(-i)))/(1+YTM*yearFraction(secondFinalCouponDate,maturityDate,dayCount,freq,anni))
+                            pvIntAndPrinc = ((finalInterest+redemValue)*((1+YTM/freq)**(-i+1)))/(1+YTM*yearFraction(secondFinalCouponDate,maturityDate,dayCount,freq,anni))
                         if finalStub == "long":
                             stubDate = secondFinalCouponDate + relativedelta(months=+int(12/freq))
                             pvIntAndPrinc = ((finalInterest+redemValue)*((1+YTM/freq)**(-i)))/(1+YTM*yearFraction(stubDate,maturityDate,dayCount,freq,anni))
