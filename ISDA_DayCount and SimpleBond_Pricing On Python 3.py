@@ -360,10 +360,10 @@ class phpTax():
     def amort_Tax(valueDate,issueDate, maturityDate, dayCount, YTM, rate, redemValue, anni, freq, firstStub, finalStub,taxRate):
         x = testBondPrice.cleanPrice(valueDate,issueDate, maturityDate, dayCount, YTM, rate, redemValue, anni, freq, firstStub, finalStub)
         y = testBondPrice.cleanPrice(valueDate,issueDate, maturityDate, dayCount, YTM*(1-taxRate), rate*(1-taxRate), redemValue, anni, freq, firstStub, finalStub)
-        return (x-y)/redemValue
+        return (x-y)/100
     
     def wtax_Coupon(valueDate, maturityDate, dayCount, YTM, Rate, redemValue, anni, freq,taxRate):
-        x = testBondPrice.accrInt(valueDate, maturityDate, dayCount, Rate, redemValue, anni, freq)*taxRate/redemValue
+        x = testBondPrice.accrInt(valueDate, maturityDate, dayCount, Rate, redemValue, anni, freq)*taxRate/100
         return x
 
 
